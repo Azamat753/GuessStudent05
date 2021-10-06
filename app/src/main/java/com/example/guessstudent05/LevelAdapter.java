@@ -15,6 +15,11 @@ import java.util.ArrayList;
 public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.LevelViewHolder> {
     
     ArrayList<GameModel> list;
+    ItemListener listener;
+    public LevelAdapter(ArrayList<GameModel> list,ItemListener listener) {
+        this.list = list;
+        this.listener = listener;
+    }
 
     @NonNull
     @NotNull
@@ -44,6 +49,16 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.LevelViewHol
 
         public void onFill(GameModel model) {
             button.setText(model.level);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.itemClick(model);
+                }
+            });
         }
+    }
+
+    interface ItemListener{
+        void itemClick(GameModel model);
     }
 }

@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class LevelFragment extends Fragment {
+public class LevelFragment extends Fragment implements LevelAdapter.ItemListener {
 
     LevelAdapter adapter;
     RecyclerView recyclerView;
@@ -31,7 +32,6 @@ public class LevelFragment extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initAdapter(view);
-        getList();
     }
 
     public ArrayList<GameModel> getList() {
@@ -41,7 +41,17 @@ public class LevelFragment extends Fragment {
 
     private void initAdapter(View view) {
         recyclerView = view.findViewById(R.id.level_recycler);
-        adapter = new LevelAdapter();
+        adapter = new LevelAdapter(getList(), this);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void itemClick(GameModel model) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("model", model);
+        GameFragment fragment = new GameFragment();
+        fragment.setArguments(bundle);
+
+        getParentFragmentManager().beginTransaction().replace(R.id.container_main, fragment).commit();
     }
 }

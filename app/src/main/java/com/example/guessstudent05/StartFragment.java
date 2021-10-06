@@ -31,24 +31,21 @@ public class StartFragment extends Fragment {
                 sendArrayModel();
             }
         });
-
-
-
     }
 
     private void sendArrayModel() {
-        GameModel model1 = new GameModel("1",
+        GameModel model1 = new GameModel("1 уровень",
                 "https://static.dw.com/image/48299247_303.jpg",
                 "https://cdn-st1.rtr-vesti.ru/vh/pictures/xw/214/550/3.jpg",
                 "https://icdn.lenta.ru/images/2019/10/23/14/20191023144102516/square_320_7f4e7ebca6193a6af0eeb414b58bdce0.jpg",
                 "https://bigasia.ru/upload/iblock/b03/b034e5975ae5a1b118386b9858a581a4.png",
                 "Сноуден");
-        GameModel model2 = new GameModel("2",
+        GameModel model2 = new GameModel("2 уровень",
                 "https://static.dw.com/image/48299247_303.jpg",
                 "https://cdn-st1.rtr-vesti.ru/vh/pictures/xw/214/550/3.jpg",
                 "https://icdn.lenta.ru/images/2019/10/23/14/20191023144102516/square_320_7f4e7ebca6193a6af0eeb414b58bdce0.jpg",
                 "https://bigasia.ru/upload/iblock/b03/b034e5975ae5a1b118386b9858a581a4.png",
-                "Сноуден");
+                "Шпион");
 
         list.add(model1);
         list.add(model2);
